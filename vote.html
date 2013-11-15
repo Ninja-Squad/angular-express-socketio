@@ -30,7 +30,8 @@
 		<script>
 
 			function VoteCtrl($scope){
-				var socket = io.connect('http://localhost:9003');
+				var host = location.origin;
+				var socket = io.connect(host);
 
 				$scope.votes = [];
 

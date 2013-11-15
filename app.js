@@ -5,7 +5,9 @@ var express = require('express')
 
 app.use(express.static(__dirname + '/'));
 
-server.listen(9003);
+var port = process.env.PORT || 9003;
+
+server.listen(port);
 
 var votes = [ 
   { choice: 1, label: 'VanillaJS', votes: 0 },
