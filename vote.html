@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Web services</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+		<style type="text/css">
+		 .vote {
+		 	font-size: 2em; 
+		 	font-weight: bold;
+		 	text-align: center;
+		 }
+		</style>
+	</head>
+
+	<body class="container" ng-app ng-controller="VoteCtrl">
+
+		<h1 class="vote">Votes</h1>
+		<br/>
+		<div class="row" ng-repeat="vote in votes">
+			<div class="col-xs-4 vote"> {{ vote.choice }} </div>
+			<div class="col-xs-4 vote"> {{ vote.votes }} </div> 
+			<div class="btn btn-primary col-xs-4" ng-click="voteFor(vote.choice)">+1</div>
+		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+		<script>
+			function VoteCtrl($scope){
+				$scope.votes = [ 
+					{ choice: 1, votes: 0 },
+					{ choice: 2, votes: 0 },
+					{ choice: 3, votes: 0 },
+					{ choice: 4, votes: 0 },
+					{ choice: 5, votes: 0 }
+				];
+
+				$scope.voteFor = function(choice){
+					console.log(choice);
+					$scope.votes[choice-1].votes++;
+				}
+			}
+		</script>
+	</body>
+</html>
