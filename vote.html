@@ -26,8 +26,12 @@
 		</div>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
 		<script>
+
 			function VoteCtrl($scope){
+				var socket = io.connect('http://localhost:9003');
+
 				$scope.votes = [ 
 					{ choice: 1, votes: 0 },
 					{ choice: 2, votes: 0 },
@@ -37,9 +41,13 @@
 				];
 
 				$scope.voteFor = function(choice){
-					console.log(choice);
-					$scope.votes[choice-1].votes++;
+					socket.emit('vote', {vote : choice })
 				}
+
+				socket.on('votes', function(msg){
+		  			$scope.votes = msg.votes;
+		  			$scope.$apply();
+		  		});
 			}
 		</script>
 	</body>
