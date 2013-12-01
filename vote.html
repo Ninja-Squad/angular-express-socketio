@@ -20,7 +20,7 @@
 		<h1 class="vote">Votes</h1>
 		<br/>
 		<div class="row" ng-repeat="vote in votes">
-			<div class="col-xs-4 vote"> {{ vote.choice }} </div>
+			<div class="col-xs-4 vote"> {{ vote.label }} </div>
 			<div class="col-xs-4 vote"> {{ vote.votes }} </div> 
 			<div class="btn btn-primary col-xs-4" ng-click="voteFor(vote.choice)">+1</div>
 		</div>
@@ -32,13 +32,7 @@
 			function VoteCtrl($scope){
 				var socket = io.connect('http://localhost:9003');
 
-				$scope.votes = [ 
-					{ choice: 1, votes: 0 },
-					{ choice: 2, votes: 0 },
-					{ choice: 3, votes: 0 },
-					{ choice: 4, votes: 0 },
-					{ choice: 5, votes: 0 }
-				];
+				$scope.votes = [];
 
 				$scope.voteFor = function(choice){
 					socket.emit('vote', {vote : choice })

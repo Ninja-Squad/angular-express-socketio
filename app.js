@@ -8,11 +8,10 @@ app.use(express.static(__dirname + '/'));
 server.listen(9003);
 
 var votes = [ 
-  { choice: 1, votes: 0 },
-  { choice: 2, votes: 0 },
-  { choice: 3, votes: 0 },
-  { choice: 4, votes: 0 },
-  { choice: 5, votes: 1 }
+  { choice: 1, label: 'VanillaJS', votes: 0 },
+  { choice: 2, label: 'AngularJS', votes: 0 },
+  { choice: 3, label: 'BackboneJS', votes: 0 },
+  { choice: 4, label: 'EmberJS', votes: 0 }
 ];
 
 io.sockets.on('connection', function (socket) {
