@@ -20,3 +20,9 @@ Socketio app
 	node app.js
 
 Open multiple tabs [in your browser](http://localhost:9003/vote.html)
+
+You can try this app on [heroku](http://angular-express-socketio.herokuapp.com/vote.html)
+
+If you try to deploy it on your own on heroku, don't forget to enable websockets support
+
+    heroku labs:enable websockets
